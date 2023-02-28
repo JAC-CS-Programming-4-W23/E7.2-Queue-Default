@@ -1,12 +1,12 @@
-# Exercise 4.2 - 🚏 Queue Array
+# Exercise 4.2 - 🚏 Queue Default
 
 ## 🎯 Objectives
 
-- **Implement** extend the features of the basic Stack with the ability 
+- **Implement** extend the features of the basic Queue with the ability to dequeue an element regardless of whether the queue is empty of not.
 
 ## 🔨 Setup
 
-1. Clone the repo (or download the zip) for this exercise, which you can find [here](https://github.com/JAC-CS-Programming-4-W23/E4.2-Queue-Array).
+1. Clone the repo (or download the zip) for this exercise, which you can find [here](https://github.com/JAC-CS-Programming-4-W23/E7.2-Queue-Default).
 2. Start IntelliJ, go to `File -> Open...`, and select the cloned/downloaded folder.
 3. If at the top it says "Project JDK is not defined", click "Setup JDK" on the top right, and select the JDK version you have installed on your machine.
 
@@ -20,29 +20,20 @@
 
 ## 🔍 Context
 
-### Extending the Stack
+### Extending the Queue
 
-Create a class called `StackMany` that supports the original stack operations with two new ones:
+Create a class called `QueueDefault` that supports the original queue operations with and updated `dequeue()`:
 
 <!-- tabs:start -->
 
-#### **pushMany**
+#### **dequeue**
 
-| Signature    | `void pushMany(T[] elements)`                        |
-| ------------ | ---------------------------------------------------- |
-| Description  | Push multiple elements onto the stack in LIFO order. |
-| Precondition | Stack has room for the number of elements.           |
-| Mutator      | Yes.                                                 |
-| Returns      | None.                                                |
-
-#### **popMany**
-
-| Signature    | `T[] popMany(int amount)`                           |
-| ------------ | --------------------------------------------------- |
-| Description  | Pop multiple elements from the stack in LIFO order. |
-| Precondition | Stack has the number of elements, `amount > 0`.     |
-| Mutator      | Yes.                                                |
-| Returns      | The popped elements in LIFO order.                  |
+| Signature    | `T dequeue()`                                                                                |
+|--------------|----------------------------------------------------------------------------------------------|
+| Description  | Remove and return an element from the queue in FIFO order, or a default value if it's empty. |
+| Precondition | None.                                                                                        |
+| Mutator      | Yes.                                                                                         |
+| Returns      | The removed element of the default value.                                                    |
 
 <!-- tabs:end -->
 
@@ -50,15 +41,17 @@ Create a class called `StackMany` that supports the original stack operations wi
 
 Let's set this up:
 
-1. Create a class called `StackMany`.
-3. Create two constructors: one where the queue `capacity` is provided and one where it is not, relying on a default `QUEUE_CAPACITY`.
-4. Implement the methods of the `Queue` API: `enqueue(..)`, `dequeue()`, `front()`, `isEmpty()` and `isFull()`.
+1. Create a class called `QueueDefault`.
+3. Create two constructors: one where the queue `capacity` is provided and one where it is not, relying on a default `QUEUE_CAPACITY`. Both constructors should accept a default value.
+4. Implement the methods of the `Queue` API: `dequeue()` and any other methods.
 5. Throw exception `QueueOverflowException` and `QueueUnderflowException` when the caller has not met the operation preconditions.
 6. Pass the unit tests in the class `TestQueue`.
 
 ## 🔬 Observations
 
-- From the Which type of methods are `pushMany` and `popMany`
+- The methods `dequeue()` is an override of the one in the super-class, but the original functionality is still required! This is very common in inheritance.
+- The `isEmpty()` method doesn't seem relevant in the `QueueDefault`. Because it's in the super-class, we need to handle the behaviour in the sub-class.
+
 
 
 
